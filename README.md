@@ -2,7 +2,7 @@
 
 A premium coding education platform with structured courses, interactive coding exercises, placement exams, and gamified learning. Cyberpunk terminal UI design.
 
-Built with Next.js 14, TypeScript, Prisma (SQLite), Tailwind CSS v4, and Claude AI.
+Built with Next.js 14, TypeScript, Prisma (PostgreSQL), Tailwind CSS v4, and Claude AI.
 
 ## Features
 
@@ -23,7 +23,7 @@ Built with Next.js 14, TypeScript, Prisma (SQLite), Tailwind CSS v4, and Claude 
 |---|---|
 | Framework | Next.js 14 (App Router) |
 | Language | TypeScript (strict, no `any`) |
-| Database | SQLite via Prisma ORM |
+| Database | PostgreSQL (Neon) via Prisma ORM |
 | Auth | NextAuth v4 (Credentials + GitHub) |
 | AI | Anthropic Claude (streaming tutor, quiz feedback) |
 | Code Runner | Judge0 CE + local fallback |
@@ -39,8 +39,8 @@ Built with Next.js 14, TypeScript, Prisma (SQLite), Tailwind CSS v4, and Claude 
 # Install dependencies
 npm install
 
-# Run database migrations and seed
-npx prisma migrate dev
+# Set up database (PostgreSQL required - get URL from Neon)
+npx prisma db push
 npx prisma db seed
 
 # Start development server
@@ -55,7 +55,7 @@ Copy `.env` to `.env.local` and fill in the values:
 
 | Variable | Required | Description |
 |---|---|---|
-| `DATABASE_URL` | Yes | Prisma datasource URL (default: `file:./dev.db`) |
+| `DATABASE_URL` | Yes | Prisma datasource URL (PostgreSQL from Neon) |
 | `NEXTAUTH_SECRET` | Yes | Random string for session encryption |
 | `NEXTAUTH_URL` | Yes | App URL (default: `http://localhost:3000`) |
 | `ANTHROPIC_API_KEY` | Yes | Claude API key for AI tutor & quiz feedback |

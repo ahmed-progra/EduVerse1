@@ -243,7 +243,7 @@ Environment:
 
 CI/CD (GitHub Actions):
 - On PR: lint, typecheck, build.
-- On merge to main: run seed check, deploy to Vercel.
+- On merge to main: `npx prisma db push && npx prisma db seed`, deploy to Vercel.
 
 Deploy checklist before every phase ship:
 - [ ] `npm run build` passes.
