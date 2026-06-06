@@ -1,0 +1,168 @@
+
+> codecamp@0.1.0 dev
+> next dev
+
+  ▲ Next.js 14.2.35
+  - Local:        http://localhost:3000
+  - Environments: .env
+
+ ✓ Starting...
+ ✓ Ready in 1601ms
+ ○ Compiling /src/middleware ...
+ ✓ Compiled /src/middleware in 604ms (174 modules)
+ ○ Compiling / ...
+ ✓ Compiled / in 5.2s (1567 modules)
+ GET / 200 in 5547ms
+ ○ Compiling /login ...
+ ✓ Compiled /login in 530ms (1555 modules)
+ GET /login 200 in 717ms
+ ✓ Compiled /register in 295ms (1547 modules)
+ GET /register 200 in 398ms
+ ✓ Compiled /courses in 356ms (1568 modules)
+ GET /courses 200 in 505ms
+ ✓ Compiled /onboarding in 286ms (1574 modules)
+ GET /onboarding 200 in 399ms
+ ○ Compiling /leaderboard ...
+ ✓ Compiled /leaderboard in 1049ms (1816 modules)
+ GET /leaderboard 307 in 1366ms
+ GET /login 200 in 72ms
+ GET / 200 in 63ms
+ ✓ Compiled in 576ms (777 modules)
+ ✓ Compiled in 300ms (777 modules)
+ ✓ Compiled in 305ms (777 modules)
+ ✓ Compiled in 410ms (777 modules)
+ ✓ Compiled in 220ms (777 modules)
+ ✓ Compiled in 228ms (777 modules)
+ ✓ Compiled in 396ms (777 modules)
+ ✓ Compiled in 198ms (777 modules)
+ ✓ Compiled in 383ms (777 modules)
+ ✓ Compiled in 213ms (777 modules)
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: ENOENT: no such file or directory, rename 'C:\Users\zconsumers\Desktop\Edvurse open code\codecamp\.next\cache\webpack\client-development\0.pack.gz_' -> 'C:\Users\zconsumers\Desktop\Edvurse open code\codecamp\.next\cache\webpack\client-development\0.pack.gz'
+ ✓ Compiled in 284ms (777 modules)
+ ✓ Compiled in 242ms (777 modules)
+ ✓ Compiled in 249ms (777 modules)
+ ✓ Compiled in 253ms (777 modules)
+ ✓ Compiled in 239ms (777 modules)
+ ✓ Compiled in 243ms (777 modules)
+   Reload env: .env
+[Error: UNKNOWN: unknown error, open 'C:\Users\zconsumers\Desktop\Edvurse open code\codecamp\.next\static\css\app\layout.css'] {
+  errno: -4094,
+  code: 'UNKNOWN',
+  syscall: 'open',
+  path: 'C:\\Users\\zconsumers\\Desktop\\Edvurse open code\\codecamp\\.next\\static\\css\\app\\layout.css'
+}
+[Error: UNKNOWN: unknown error, open 'C:\Users\zconsumers\Desktop\Edvurse open code\codecamp\.next\static\css\app\layout.css'] {
+  errno: -4094,
+  code: 'UNKNOWN',
+  syscall: 'open',
+  path: 'C:\\Users\\zconsumers\\Desktop\\Edvurse open code\\codecamp\\.next\\static\\css\\app\\layout.css'
+}
+ ⨯ [Error: UNKNOWN: unknown error, open 'C:\Users\zconsumers\Desktop\Edvurse open code\codecamp\.next\static\css\app\layout.css'] {
+  errno: -4094,
+  code: 'UNKNOWN',
+  syscall: 'open',
+  path: 'C:\\Users\\zconsumers\\Desktop\\Edvurse open code\\codecamp\\.next\\static\\css\\app\\layout.css'
+}
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: ENOENT: no such file or directory, lstat 'C:\Users\zconsumers\Desktop\Edvurse open code\codecamp\.next\server\app'
+<w> [webpack.cache.PackFileCacheStrategy/webpack.FileSystemInfo] Resolving '../../../../.next/server/app/page' in C:\Users\zconsumers\Desktop\Edvurse open code\codecamp\node_modules\next\dist\server for build dependencies doesn't lead to expected result 'C:\Users\zconsumers\Desktop\Edvurse open code\codecamp\.next\server\app\page.js', but to 'Error: Can't resolve '../../../../.next/server/app/page' in 'C:\Users\zconsumers\Desktop\Edvurse open code\codecamp\node_modules\next\dist\server'' instead. Resolving dependencies are ignored for this path.
+<w>  at resolve commonjs file ../../../../.next/server/app/page (expected C:\Users\zconsumers\Desktop\Edvurse open code\codecamp\.next\server\app\page.js)
+<w>  at file dependencies C:\Users\zconsumers\Desktop\Edvurse open code\codecamp\node_modules\next\dist\server\require.js
+<w>  at file C:\Users\zconsumers\Desktop\Edvurse open code\codecamp\node_modules\next\dist\server\require.js
+<w>  at file dependencies C:\Users\zconsumers\Desktop\Edvurse open code\codecamp\node_modules\next\dist\server\load-components.js
+<w>  at file C:\Users\zconsumers\Desktop\Edvurse open code\codecamp\node_modules\next\dist\server\load-components.js
+<w>  at file dependencies C:\Users\zconsumers\Desktop\Edvurse open code\codecamp\node_modules\next\dist\build\utils.js
+<w>  at file C:\Users\zconsumers\Desktop\Edvurse open code\codecamp\node_modules\next\dist\build\utils.js
+<w>  at file dependencies C:\Users\zconsumers\Desktop\Edvurse open code\codecamp\node_modules\next\dist\build\handle-externals.js
+<w>  at file C:\Users\zconsumers\Desktop\Edvurse open code\codecamp\node_modules\next\dist\build\handle-externals.js
+<w>  at file dependencies C:\Users\zconsumers\Desktop\Edvurse open code\codecamp\node_modules\next\dist\build\webpack\loaders\next-swc-loader.js
+<w>  at file C:\Users\zconsumers\Desktop\Edvurse open code\codecamp\node_modules\next\dist\build\webpack\loaders\next-swc-loader.js
+<w>  at resolve commonjs C:\Users\zconsumers\Desktop\Edvurse open code\codecamp\node_modules\next\dist\build\webpack\loaders\next-swc-loader.js
+<w> [webpack.cache.PackFileCacheStrategy/webpack.FileSystemInfo] Resolving '../../../../.next/server/app/login/page' in C:\Users\zconsumers\Desktop\Edvurse open code\codecamp\node_modules\next\dist\server for build dependencies doesn't lead to expected result 'C:\Users\zconsumers\Desktop\Edvurse open code\codecamp\.next\server\app\login\page.js', but to 'Error: Can't resolve '../../../../.next/server/app/login/page' in 'C:\Users\zconsumers\Desktop\Edvurse open code\codecamp\node_modules\next\dist\server'' instead. Resolving dependencies are ignored for this path.
+<w>  at resolve commonjs file ../../../../.next/server/app/login/page (expected C:\Users\zconsumers\Desktop\Edvurse open code\codecamp\.next\server\app\login\page.js)
+<w>  at file dependencies C:\Users\zconsumers\Desktop\Edvurse open code\codecamp\node_modules\next\dist\server\require.js
+<w>  at file C:\Users\zconsumers\Desktop\Edvurse open code\codecamp\node_modules\next\dist\server\require.js
+<w>  at file dependencies C:\Users\zconsumers\Desktop\Edvurse open code\codecamp\node_modules\next\dist\server\load-components.js
+<w>  at file C:\Users\zconsumers\Desktop\Edvurse open code\codecamp\node_modules\next\dist\server\load-components.js
+<w>  at file dependencies C:\Users\zconsumers\Desktop\Edvurse open code\codecamp\node_modules\next\dist\build\utils.js
+<w>  at file C:\Users\zconsumers\Desktop\Edvurse open code\codecamp\node_modules\next\dist\build\utils.js
+<w>  at file dependencies C:\Users\zconsumers\Desktop\Edvurse open code\codecamp\node_modules\next\dist\build\handle-externals.js
+<w>  at file C:\Users\zconsumers\Desktop\Edvurse open code\codecamp\node_modules\next\dist\build\handle-externals.js
+<w>  at file dependencies C:\Users\zconsumers\Desktop\Edvurse open code\codecamp\node_modules\next\dist\build\webpack\loaders\next-swc-loader.js
+<w>  at file C:\Users\zconsumers\Desktop\Edvurse open code\codecamp\node_modules\next\dist\build\webpack\loaders\next-swc-loader.js
+<w>  at resolve commonjs C:\Users\zconsumers\Desktop\Edvurse open code\codecamp\node_modules\next\dist\build\webpack\loaders\next-swc-loader.js
+<w> [webpack.cache.PackFileCacheStrategy/webpack.FileSystemInfo] Resolving '../../../../.next/server/app/leaderboard/page' in C:\Users\zconsumers\Desktop\Edvurse open code\codecamp\node_modules\next\dist\server for build dependencies doesn't lead to expected result 'C:\Users\zconsumers\Desktop\Edvurse open code\codecamp\.next\server\app\leaderboard\page.js', but to 'Error: Can't resolve '../../../../.next/server/app/leaderboard/page' in 'C:\Users\zconsumers\Desktop\Edvurse open code\codecamp\node_modules\next\dist\server'' instead. Resolving dependencies are ignored for this path.
+<w>  at resolve commonjs file ../../../../.next/server/app/leaderboard/page (expected C:\Users\zconsumers\Desktop\Edvurse open code\codecamp\.next\server\app\leaderboard\page.js)
+<w>  at file dependencies C:\Users\zconsumers\Desktop\Edvurse open code\codecamp\node_modules\next\dist\server\require.js
+<w>  at file C:\Users\zconsumers\Desktop\Edvurse open code\codecamp\node_modules\next\dist\server\require.js
+<w>  at file dependencies C:\Users\zconsumers\Desktop\Edvurse open code\codecamp\node_modules\next\dist\server\load-components.js
+<w>  at file C:\Users\zconsumers\Desktop\Edvurse open code\codecamp\node_modules\next\dist\server\load-components.js
+<w>  at file dependencies C:\Users\zconsumers\Desktop\Edvurse open code\codecamp\node_modules\next\dist\build\utils.js
+<w>  at file C:\Users\zconsumers\Desktop\Edvurse open code\codecamp\node_modules\next\dist\build\utils.js
+<w>  at file dependencies C:\Users\zconsumers\Desktop\Edvurse open code\codecamp\node_modules\next\dist\build\handle-externals.js
+<w>  at file C:\Users\zconsumers\Desktop\Edvurse open code\codecamp\node_modules\next\dist\build\handle-externals.js
+<w>  at file dependencies C:\Users\zconsumers\Desktop\Edvurse open code\codecamp\node_modules\next\dist\build\webpack\loaders\next-swc-loader.js
+<w>  at file C:\Users\zconsumers\Desktop\Edvurse open code\codecamp\node_modules\next\dist\build\webpack\loaders\next-swc-loader.js
+<w>  at resolve commonjs C:\Users\zconsumers\Desktop\Edvurse open code\codecamp\node_modules\next\dist\build\webpack\loaders\next-swc-loader.js
+[Error: UNKNOWN: unknown error, open 'C:\Users\zconsumers\Desktop\Edvurse open code\codecamp\.next\static\css\app\layout.css'] {
+  errno: -4094,
+  code: 'UNKNOWN',
+  syscall: 'open',
+  path: 'C:\\Users\\zconsumers\\Desktop\\Edvurse open code\\codecamp\\.next\\static\\css\\app\\layout.css'
+}
+[Error: UNKNOWN: unknown error, open 'C:\Users\zconsumers\Desktop\Edvurse open code\codecamp\.next\static\css\app\layout.css'] {
+  errno: -4094,
+  code: 'UNKNOWN',
+  syscall: 'open',
+  path: 'C:\\Users\\zconsumers\\Desktop\\Edvurse open code\\codecamp\\.next\\static\\css\\app\\layout.css'
+}
+ ⨯ [Error: UNKNOWN: unknown error, open 'C:\Users\zconsumers\Desktop\Edvurse open code\codecamp\.next\static\css\app\layout.css'] {
+  errno: -4094,
+  code: 'UNKNOWN',
+  syscall: 'open',
+  path: 'C:\\Users\\zconsumers\\Desktop\\Edvurse open code\\codecamp\\.next\\static\\css\\app\\layout.css'
+}
+[Error: UNKNOWN: unknown error, open 'C:\Users\zconsumers\Desktop\Edvurse open code\codecamp\.next\static\css\app\layout.css'] {
+  errno: -4094,
+  code: 'UNKNOWN',
+  syscall: 'open',
+  path: 'C:\\Users\\zconsumers\\Desktop\\Edvurse open code\\codecamp\\.next\\static\\css\\app\\layout.css'
+}
+[Error: UNKNOWN: unknown error, open 'C:\Users\zconsumers\Desktop\Edvurse open code\codecamp\.next\static\css\app\layout.css'] {
+  errno: -4094,
+  code: 'UNKNOWN',
+  syscall: 'open',
+  path: 'C:\\Users\\zconsumers\\Desktop\\Edvurse open code\\codecamp\\.next\\static\\css\\app\\layout.css'
+}
+ ⨯ [Error: UNKNOWN: unknown error, open 'C:\Users\zconsumers\Desktop\Edvurse open code\codecamp\.next\static\css\app\layout.css'] {
+  errno: -4094,
+  code: 'UNKNOWN',
+  syscall: 'open',
+  path: 'C:\\Users\\zconsumers\\Desktop\\Edvurse open code\\codecamp\\.next\\static\\css\\app\\layout.css'
+}
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: ENOENT: no such file or directory, lstat 'C:\Users\zconsumers\Desktop\Edvurse open code\codecamp\.next\server\app'
+<w> [webpack.cache.PackFileCacheStrategy/webpack.FileSystemInfo] Resolving '../../../../.next/server/app/page' in C:\Users\zconsumers\Desktop\Edvurse open code\codecamp\node_modules\next\dist\server for build dependencies doesn't lead to expected result 'C:\Users\zconsumers\Desktop\Edvurse open code\codecamp\.next\server\app\page.js', but to 'Error: Can't resolve '../../../../.next/server/app/page' in 'C:\Users\zconsumers\Desktop\Edvurse open code\codecamp\node_modules\next\dist\server'' instead. Resolving dependencies are ignored for this path.
+<w>  at resolve commonjs file ../../../../.next/server/app/page (expected C:\Users\zconsumers\Desktop\Edvurse open code\codecamp\.next\server\app\page.js)
+<w>  at file dependencies C:\Users\zconsumers\Desktop\Edvurse open code\codecamp\node_modules\next\dist\server\require.js
+<w>  at file C:\Users\zconsumers\Desktop\Edvurse open code\codecamp\node_modules\next\dist\server\require.js
+<w>  at file dependencies C:\Users\zconsumers\Desktop\Edvurse open code\codecamp\node_modules\next\dist\server\load-components.js
+<w>  at file C:\Users\zconsumers\Desktop\Edvurse open code\codecamp\node_modules\next\dist\server\load-components.js
+<w>  at file dependencies C:\Users\zconsumers\Desktop\Edvurse open code\codecamp\node_modules\next\dist\build\utils.js
+<w>  at file C:\Users\zconsumers\Desktop\Edvurse open code\codecamp\node_modules\next\dist\build\utils.js
+<w>  at file dependencies C:\Users\zconsumers\Desktop\Edvurse open code\codecamp\node_modules\next\dist\build\handle-externals.js
+<w>  at file C:\Users\zconsumers\Desktop\Edvurse open code\codecamp\node_modules\next\dist\build\handle-externals.js
+<w>  at file dependencies C:\Users\zconsumers\Desktop\Edvurse open code\codecamp\node_modules\next\dist\build\webpack\loaders\next-swc-loader.js
+<w>  at file C:\Users\zconsumers\Desktop\Edvurse open code\codecamp\node_modules\next\dist\build\webpack\loaders\next-swc-loader.js
+<w>  at resolve commonjs C:\Users\zconsumers\Desktop\Edvurse open code\codecamp\node_modules\next\dist\build\webpack\loaders\next-swc-loader.js
+<w> [webpack.cache.PackFileCacheStrategy/webpack.FileSystemInfo] Resolving '../../../../.next/server/app/login/page' in C:\Users\zconsumers\Desktop\Edvurse open code\codecamp\node_modules\next\dist\server for build dependencies doesn't lead to expected result 'C:\Users\zconsumers\Desktop\Edvurse open code\codecamp\.next\server\app\login\page.js', but to 'Error: Can't resolve '../../../../.next/server/app/login/page' in 'C:\Users\zconsumers\Desktop\Edvurse open code\codecamp\node_modules\next\dist\server'' instead. Resolving dependencies are ignored for this path.
+<w>  at resolve commonjs file ../../../../.next/server/app/login/page (expected C:\Users\zconsumers\Desktop\Edvurse open code\codecamp\.next\server\app\login\page.js)
+<w>  at file dependencies C:\Users\zconsumers\Desktop\Edvurse open code\codecamp\node_modules\next\dist\server\require.js
+<w>  at file C:\Users\zconsumers\Desktop\Edvurse open code\codecamp\node_modules\next\dist\server\require.js
+<w>  at file dependencies C:\Users\zconsumers\Desktop\Edvurse open code\codecamp\node_modules\next\dist\server\load-components.js
+<w>  at file C:\Users\zconsumers\Desktop\Edvurse open code\codecamp\node_modules\next\dist\server\load-components.js
+<w>  at file dependencies C:\Users\zconsumers\Desktop\Edvurse open code\codecamp\node_modules\next\dist\build\utils.js
+<w>  at file C:\Users\zconsumers\Desktop\Edvurse open code\codecamp\node_modules\next\dist\build\utils.js
+<w>  at file dependencies C:\Users\zconsumers\Desktop\Edvurse open code\codecamp\node_modules\next\dist\build\handle-externals.js
+<w>  at file C:\Users\zconsumers\Desktop\Edvurse open code\codecamp\node_modules\next\dist\build\handle-externals.js
+<w>  at file dependencies C:\Users\zconsumers\Desktop\Edvurse open code\codecamp\node_modules\next\dist\build\webpack\loaders\next-swc-loader.js
+<w>  at file C:\Users\zconsumers\Desktop\Edvurse open code\codecamp\node_modules\next\dist\build\webpack\loaders\next-swc-loader.js
+<w>  at resolve commonjs C:\Users\zconsumers\Desktop\Edvurse open code\codecamp\node_modules\next\dist\build\webpack\loaders\next-swc-loader.js

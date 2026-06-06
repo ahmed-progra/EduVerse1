@@ -1,0 +1,377 @@
+{
+  "common": {
+    "skipToContent": "Skip to content",
+    "loading": "Loading...",
+    "save": "Save Changes",
+    "saving": "Saving…",
+    "saved": "✓ Saved",
+    "error": "Error",
+    "back": "← Back",
+    "submit": "Submit",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "search": "Search",
+    "noResults": "No results found."
+  },
+  "nav": {
+    "home": "Home",
+    "courses": "Courses",
+    "dashboard": "Dashboard",
+    "leaderboard": "Leaderboard",
+    "settings": "Settings",
+    "achievements": "Achievements",
+    "signIn": "Sign In",
+    "signOut": "Sign Out",
+    "register": "Get Started",
+    "language": "Language",
+    "theme": {
+      "label": "Theme",
+      "dark": "Dark",
+      "light": "Light"
+    }
+  },
+  "home": {
+    "hero": {
+      "badge": "Interactive Coding Education",
+      "heading": "Code. Learn.\nLevel Up.",
+      "description": "Master Python, JavaScript, HTML/CSS, and C++ with structured courses, AI-powered tutoring, and hands-on coding exercises — all in a cyberpunk terminal interface.",
+      "cta": "Start Learning Free",
+      "demo": "Live Demo →",
+      "signedInCta": "Go to Dashboard →"
+    },
+    "sections": {
+      "howItWorks": "// 01 — how it works",
+      "howItWorksTitle": "Learn by doing.\nFrom day one.",
+      "features": "// 02 — features",
+      "featuresTitle": "Built for how you actually learn.",
+      "tracks": "// 03 — tracks",
+      "tracksTitle": "Four languages.\nOne platform.",
+      "testimonials": "// 04 — testimonials",
+      "testimonialsTitle": "Loved by learners.",
+      "faq": "// 05 — faq",
+      "faqTitle": "Common questions.",
+      "cta": "Ready to start coding?",
+      "ctaSub": "Join thousands of learners mastering Python, JavaScript, HTML/CSS, and C++.",
+      "ctaButton": "Start Learning Free"
+    },
+    "features": {
+      "structured": {
+        "title": "Structured Courses",
+        "desc": "Guided paths from zero to production-ready, with placement tests to skip what you already know."
+      },
+      "aiTutor": {
+        "title": "AI Tutor",
+        "desc": "Get contextual hints from a Claude-powered tutor when you're stuck — never the full solution."
+      },
+      "gamified": {
+        "title": "Gamified Learning",
+        "desc": "Earn XP, climb the leaderboard, and unlock achievements as you progress through each course."
+      },
+      "projects": {
+        "title": "Real Projects",
+        "desc": "Build portfolio-ready projects with automated grading and personalized AI feedback."
+      }
+    },
+    "tracks": {
+      "python": "Python — data & automation",
+      "javascript": "JavaScript — web & beyond",
+      "htmlcss": "HTML/CSS — structure & style",
+      "cpp": "C++ — performance & systems"
+    },
+    "testimonials": {
+      "prev": "Previous",
+      "next": "Next"
+    },
+    "faqItems": [
+      "Do I need prior coding experience?",
+      "How does the AI tutor work?",
+      "Can I switch languages mid-track?",
+      "What if I finish all the content?",
+      "Is there a mobile app?",
+      "How accurate is the placement test?"
+    ],
+    "faqAnswers": [
+      "No. EduVerse starts from absolute basics in every language track. If you already know some, take a placement test to skip ahead.",
+      "When you get stuck, click \"Ask AI\". A Claude-powered tutor reads your code and the lesson context, then nudges you with hints — never the full solution.",
+      "Yes. Your progress is saved per course. Jump between HTML/CSS, JavaScript, Python, and C++ whenever you want.",
+      "New lessons and projects are added regularly. Follow our changelog and suggest topics you'd like to see.",
+      "Not yet. EduVerse is designed for desktop browsers with a real code editor. Mobile is on the roadmap.",
+      "The adaptive test adjusts difficulty based on your answers. Most learners find it places them within 1–2 lessons of their actual level."
+    ]
+  },
+  "auth": {
+    "login": {
+      "title": "Sign In",
+      "subtitle": "Welcome back. Continue your coding journey.",
+      "email": "Email",
+      "password": "Password",
+      "button": "Sign In",
+      "loading": "Signing in…",
+      "noAccount": "Don't have an account?",
+      "registerLink": "Create one",
+      "error": "Invalid email or password",
+      "oauth": "Continue with GitHub"
+    },
+    "register": {
+      "title": "Create Account",
+      "subtitle": "Start your coding journey today.",
+      "name": "Display Name",
+      "email": "Email",
+      "password": "Password",
+      "passwordStrength": "Password strength",
+      "button": "Create Account",
+      "loading": "Creating account…",
+      "hasAccount": "Already have an account?",
+      "loginLink": "Sign in",
+      "error": "Registration failed. Try again.",
+      "strengthLabels": ["Weak", "Fair", "Good", "Strong"]
+    }
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "subtitle": "Your learning overview and quick actions.",
+    "stats": {
+      "totalXp": "Total XP",
+      "level": "Level",
+      "streak": "Day Streak",
+      "completed": "Completed"
+    },
+    "continueLearning": "Continue Learning",
+    "nextLesson": "Next Lesson →",
+    "dailyQuests": "Daily Quests",
+    "quests": {
+      "completeLesson": "Complete 1 lesson",
+      "earnXp": "Earn 50 XP",
+      "loginStreak": "Login streak"
+    },
+    "quickActions": "Quick Actions",
+    "viewCourse": "View Course",
+    "backToDashboard": "← Back to Dashboard",
+    "noQuests": "All quests completed. Great work today!"
+  },
+  "courses": {
+    "title": "Course Catalog",
+    "subtitle": "Choose your learning path.",
+    "empty": "No courses available yet.",
+    "continue": "Continue →",
+    "start": "Start First Lesson →",
+    "back": "← Back to Courses",
+    "signInToStart": "Sign in to start learning →",
+    "completed": "Complete",
+    "notInPath": "Not in your path",
+    "takeExam": "Take Final Exam →",
+    "lessonsCompleted": "{count} lessons completed",
+    "lessons": "lessons",
+    "progress": "Progress",
+    "path": "path",
+    "levels": {
+      "beginner": "Beginner",
+      "intermediate": "Intermediate",
+      "advanced": "Advanced"
+    },
+    "exercises": {
+      "exercise": "exercise",
+      "code": "Code",
+      "quiz": "Quiz",
+      "project": "Project"
+    }
+  },
+  "lesson": {
+    "backToCourse": "← Back to {course}",
+    "lessonOf": "Lesson {current} of {total}",
+    "prevLesson": "← Previous",
+    "nextLesson": "Next →",
+    "markComplete": "Mark as Complete",
+    "completed": "✓ Complete",
+    "askAi": "Ask AI",
+    "aiThinking": "Thinking…",
+    "hint": "Need a hint? Ask the AI tutor below.",
+    "codeEditor": "Code Editor",
+    "output": "Output",
+    "runCode": "Run Code",
+    "running": "Running…",
+    "quiz": {
+      "title": "Quiz",
+      "submit": "Submit Answers",
+      "score": "Your Score: {score}%",
+      "pass": "✓ Passed",
+      "fail": "Failed — Review and try again",
+      "correct": "Correct!",
+      "incorrect": "Incorrect",
+      "explanation": "Explanation"
+    }
+  },
+  "leaderboard": {
+    "title": "Leaderboard",
+    "subtitle": {
+      "all": "Ranked by total lessons completed. XP breaks ties.",
+      "week": "Ranked by lessons completed in the last 7 days.",
+      "month": "Ranked by lessons completed in the last 30 days."
+    },
+    "autoUpdate": "Auto-updates every 30s",
+    "periods": {
+      "all": "All-Time",
+      "week": "This Week",
+      "month": "This Month"
+    },
+    "headers": {
+      "rank": "Rank",
+      "user": "User",
+      "level": "Lvl",
+      "lessons": "Lessons",
+      "xp": "XP"
+    },
+    "empty": "No users yet. Complete a lesson to claim rank #1.",
+    "you": "(you)",
+    "backToDashboard": "← Back to Dashboard"
+  },
+  "settings": {
+    "title": "Settings",
+    "subtitle": "Manage your account and learning preferences.",
+    "profile": {
+      "title": "Profile",
+      "name": "Display name",
+      "email": "Email"
+    },
+    "preferences": {
+      "title": "Learning Preferences",
+      "goal": "Goal",
+      "language": "Language",
+      "level": "Level",
+      "goalPlaceholder": "—",
+      "goals": {
+        "career": "Career Change",
+        "academic": "Academic",
+        "hobby": "Personal Project",
+        "upskill": "Upskill"
+      },
+      "languagePlaceholder": "—",
+      "languages": {
+        "html-css": "HTML & CSS",
+        "javascript": "JavaScript",
+        "python": "Python",
+        "cpp": "C++"
+      },
+      "levels": {
+        "beginner": "Beginner",
+        "intermediate": "Intermediate",
+        "advanced": "Advanced"
+      },
+      "levelPlaceholder": "—"
+    },
+    "appearance": {
+      "title": "Appearance"
+    },
+    "account": {
+      "title": "Account"
+    },
+    "unsaved": "Unsaved changes",
+    "saveError": "Couldn't save — try again"
+  },
+  "achievements": {
+    "title": "Achievements",
+    "subtitle": "Complete challenges to earn achievements and XP.",
+    "xpEarned": "{xp} XP earned",
+    "progress": "Progress",
+    "of": "{earned} / {total} ({percent}%)",
+    "recentlyUnlocked": "✦ Recently Unlocked",
+    "backToDashboard": "← Back to Dashboard",
+    "rarity": {
+      "common": "Common",
+      "uncommon": "Uncommon",
+      "rare": "Rare",
+      "epic": "Epic"
+    },
+    "categories": {
+      "milestone": "Milestones",
+      "streak": "Streaks",
+      "quiz": "Quizzes",
+      "project": "Projects",
+      "course": "Courses",
+      "xp": "XP Milestones"
+    }
+  },
+  "onboarding": {
+    "welcome": "Welcome to EduVerse",
+    "subtitle": "Let's set up your learning experience.",
+    "step1": {
+      "title": "What's your goal?",
+      "subtitle": "This helps us recommend the right path."
+    },
+    "step2": {
+      "title": "Preferred Language",
+      "subtitle": "Pick where you'd like to start."
+    },
+    "step3": {
+      "title": "Your Experience Level",
+      "subtitle": "We'll adjust the difficulty."
+    },
+    "step4": {
+      "title": "You're all set!",
+      "subtitle": "Start your first course and begin coding.",
+      "button": "Go to Dashboard"
+    },
+    "next": "Next",
+    "back": "Back",
+    "skip": "Skip"
+  },
+  "placement": {
+    "title": "Placement Test",
+    "subtitle": "Answer a few questions to determine your starting level.",
+    "start": "Start Test",
+    "next": "Next Question",
+    "submit": "Submit",
+    "loading": "Evaluating…",
+    "result": {
+      "title": "You've been placed in {level}!",
+      "beginner": "You'll start from the fundamentals and build a solid foundation.",
+      "intermediate": "You have some experience — we'll skip the basics and dive deeper.",
+      "advanced": "You're highly skilled — we'll challenge you with advanced concepts.",
+      "cta": "Start Learning"
+    }
+  },
+  "levelUp": {
+    "title": "Level Up!",
+    "subtitle": "You reached Level {level}",
+    "xpEarned": "+{xp} XP"
+  },
+  "exam": {
+    "title": "Final Exam",
+    "subtitle": "Test your knowledge of {course}.",
+    "start": "Begin Exam",
+    "submit": "Submit Exam",
+    "loading": "Grading…",
+    "pass": "🎉 Congratulations! You passed!",
+    "fail": "Don't give up! Review the material and try again.",
+    "score": "Score: {score}%",
+    "passing": "Passing: 70%",
+    "backToCourse": "← Back to Course"
+  },
+  "project": {
+    "title": "Project",
+    "subtitle": "Build a real project to demonstrate your skills.",
+    "submit": "Submit Project",
+    "loading": "Evaluating…",
+    "feedback": "AI Feedback",
+    "grade": "Grade: {grade}/100",
+    "backToCourse": "← Back to Course"
+  },
+  "demo": {
+    "title": "EduVerse Live Demo",
+    "subtitle": "Explore the platform — no account needed.",
+    "cta": "Create Free Account",
+    "ctaSub": "Sign up to save your progress and unlock all features."
+  },
+  "footer": {
+    "tagline": "Premium coding education for the next generation of developers.",
+    "product": "Product",
+    "company": "Company",
+    "legal": "Legal",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "about": "About",
+    "blog": "Blog",
+    "changelog": "Changelog",
+    "allRights": "All rights reserved."
+  }
+}
