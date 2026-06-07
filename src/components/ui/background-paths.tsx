@@ -1,8 +1,10 @@
 "use client";
 
 import { useEffect, useState, useRef } from "react";
-import { motion } from "motion/react";
+import { motion, useMotionValue, useSpring } from "motion/react";
 import { Button } from "@/components/ui/button";
+import { Typewriter } from "@/components/ui/typewriter";
+import { HeroIllustration } from "@/components/ui/hero-illustration";
 
 const LANGUAGES = [
   { label: "HTML/CSS", color: "var(--chart-3)" },
@@ -19,38 +21,32 @@ function FloatingPaths({ position }: { position: number }) {
     duration: 25 + i * 2,
   }));
 
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [mouseX, setMouseX] = useState(0.5);
-  const [mouseY, setMouseY] = useState(0.5);
+  const mx = useMotionValue(0);
+  const my = useMotionValue(0);
+  const x = useSpring(mx, { stiffness: 80, damping: 20, mass: 0.6 });
+  const y = useSpring(my, { stiffness: 80, damping: 20, mass: 0.6 });
 
   useEffect(() => {
     const handle = (e: MouseEvent) => {
-      setMouseX(e.clientX / window.innerWidth);
-      setMouseY(e.clientY / window.innerHeight);
+      mx.set((e.clientX / window.innerWidth - 0.5) * 12);
+      my.set((e.clientY / window.innerHeight - 0.5) * 12);
     };
     window.addEventListener("mousemove", handle, { passive: true });
     return () => window.removeEventListener("mousemove", handle);
-  }, []);
-
-  const dx = (mouseX - 0.5) * 12;
-  const dy = (mouseY - 0.5) * 12;
+  }, [mx, my]);
 
   return (
-    <div
-      ref={containerRef}
-      className="absolute inset-0 pointer-events-none"
-      style={{ transform: `translate(${dx}px, ${dy}px)`, transition: "transform 0.15s ease-out" }}
-    >
+    <motion.div className="absolute inset-0 pointer-events-none" style={{ x, y }}>
       <svg className="w-full h-full text-primary" viewBox="0 0 696 316" fill="none">
-        <title>Data streams</title>
+        <title>Decorative paths</title>
         {paths.map((path) => (
           <motion.path
             key={path.id}
             d={path.d}
             stroke="currentColor"
             strokeWidth={path.width}
-            strokeOpacity={0.04 + path.id * 0.035}
-            animate={{ opacity: [0.15, 0.4, 0.15] }}
+            strokeOpacity={0.04 + path.id * 0.025}
+            animate={{ opacity: [0.1, 0.3, 0.1] }}
             transition={{
               duration: path.duration,
               repeat: Number.POSITIVE_INFINITY,
@@ -59,20 +55,7 @@ function FloatingPaths({ position }: { position: number }) {
           />
         ))}
       </svg>
-    </div>
-  );
-}
-
-function TerminalStatic() {
-  return (
-    <div className="font-mono text-xs sm:text-sm leading-relaxed">
-      <div className="flex items-start gap-2">
-        <span className="text-primary shrink-0 select-none">$</span>
-        <span className="text-foreground">
-          npm create eduverse@latest<span className="text-primary animate-pulse">▌</span>
-        </span>
-      </div>
-    </div>
+    </motion.div>
   );
 }
 
@@ -109,9 +92,9 @@ function AnimatedStats() {
   }, []);
 
   return (
-    <div className="flex items-center justify-center gap-6 sm:gap-10">
+    <div className="flex items-center gap-6 sm:gap-10">
       {HERO_STATS.map((s, i) => (
-        <div key={s.label} className="text-center">
+        <div key={s.label}>
           <span className="block text-xl sm:text-2xl font-bold text-primary tabular-nums">
             {counts[i]}{s.suffix}
           </span>
@@ -120,22 +103,17 @@ function AnimatedStats() {
           </span>
         </div>
       ))}
-      <div className="h-8 w-px bg-border" />
-      <div className="flex items-center gap-2">
-        <span className="h-2 w-2 rounded-full bg-destructive" style={{ boxShadow: "0 0 6px var(--destructive)" }} />
-        <span className="text-[10px] uppercase tracking-[0.15em] text-muted-foreground">Live</span>
-      </div>
     </div>
   );
 }
 
 function LanguageBadges() {
   return (
-    <div className="flex items-center justify-center gap-3 flex-wrap">
+    <div className="flex items-center gap-3 flex-wrap">
       {LANGUAGES.map((lang) => (
         <span
           key={lang.label}
-          className="inline-flex items-center gap-1.5 border border-border bg-card/30 px-2.5 py-1 text-[10px] uppercase tracking-wider text-muted-foreground"
+          className="inline-flex items-center gap-1.5 rounded-full border border-border bg-card/60 px-3 py-1 text-[11px] font-medium text-muted-foreground"
         >
           <span className="h-1.5 w-1.5 rounded-full" style={{ backgroundColor: lang.color }} />
           {lang.label}
@@ -156,146 +134,104 @@ export function BackgroundPaths({
   cta?: string;
   onCta?: () => void;
 }) {
-  const words = title.split(" ");
-
   return (
-    <div className="relative min-h-screen w-full flex items-center justify-center overflow-hidden">
+    <div className="relative min-h-[90vh] w-full flex items-center overflow-hidden">
       <div className="absolute inset-0">
         <FloatingPaths position={1} />
         <FloatingPaths position={-1} />
       </div>
 
-      <div className="relative z-10 container mx-auto px-4 md:px-6 text-center">
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.4, ease: "easeOut" }}
-          className="max-w-4xl mx-auto"
-        >
-          {/* Terminal status line */}
-          <motion.div
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3, ease: "easeOut" }}
-            className="mb-6 inline-flex items-center gap-2 border border-border bg-card/40 px-3 py-1 text-[11px] uppercase tracking-[0.2em] text-muted-foreground"
-          >
-            <span
-              className="h-1.5 w-1.5 rounded-full bg-destructive"
-              style={{ boxShadow: "0 0 6px var(--destructive)" }}
-            />
-            <span className="text-foreground font-semibold">EduVerse</span>
-            <span className="text-muted-foreground">—</span>
-            Interactive Coding Platform
-          </motion.div>
-
-          {/* Title with per-letter spring */}
-          <h1 className="text-glow text-5xl sm:text-7xl md:text-8xl font-extrabold mb-6 tracking-tighter text-foreground uppercase">
-            {words.map((word, wi) => (
-              <span key={wi} className="inline-block mr-4 last:mr-0">
-                {word.split("").map((letter, li) => (
-                  <motion.span
-                    key={`${wi}-${li}`}
-                    initial={{ y: 60, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    transition={{
-                      delay: wi * 0.08 + li * 0.025,
-                      type: "spring",
-                      stiffness: 200,
-                      damping: 14,
-                      mass: 0.8,
-                    }}
-                    className="inline-block"
-                  >
-                    {letter}
-                  </motion.span>
-                ))}
-              </span>
-            ))}
-            <span className="cursor-blink align-baseline" aria-hidden="true" />
-          </h1>
-
-          {/* Shimmer description */}
-          <motion.p
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: 0.3, ease: "easeOut" }}
-            className="shimmer-strong mb-6 max-w-xl mx-auto text-sm sm:text-base font-semibold tracking-wide"
-          >
-            Master coding with AI-guided lessons, live code execution, and gamified progression.
-          </motion.p>
-
-          {/* Language badges row */}
-          <motion.div
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3, delay: 0.4, ease: "easeOut" }}
-            className="mb-6"
-          >
-            <LanguageBadges />
-          </motion.div>
-
-          {/* Live typing code demo */}
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: 0.45, ease: "easeOut" }}
-            className="mb-6 mx-auto max-w-xs text-left border border-border bg-card/60 backdrop-blur-sm p-3"
-          >
-            <div className="flex items-center gap-2 mb-2 pb-1.5 border-b border-border">
-              <span className="flex gap-1">
-                <span className="h-2 w-2 rounded-full bg-border" />
-                <span className="h-2 w-2 rounded-full bg-border" />
-                <span className="h-2 w-2 rounded-full bg-primary/60" />
-              </span>
-              <span className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground ml-1">
-                terminal
-              </span>
-            </div>
-            <TerminalStatic />
-          </motion.div>
-
-          {description && (
+      <div className="relative z-10 container mx-auto px-4 md:px-6 w-full">
+        <div className="grid lg:grid-cols-12 gap-8 items-center min-h-[80vh]">
+          {/* Left: content — 7 cols on desktop */}
+          <div className="lg:col-span-7 text-center lg:text-left">
             <motion.div
-              initial={{ opacity: 0, y: 14 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: 0.5, ease: "easeOut" }}
-              className="mb-5 max-w-2xl mx-auto space-y-1 text-left sm:text-center"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.4, ease: "easeOut" }}
             >
-              {description.map((line, i) => (
-                <p key={i} className="text-sm sm:text-base text-muted-foreground">
-                  <span className="text-primary mr-2 select-none">&gt;</span>
-                  {line}
-                </p>
-              ))}
+              <motion.div
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3, ease: "easeOut" }}
+                className="mb-4 inline-flex items-center gap-2 rounded-full border border-border bg-card/60 px-4 py-1.5 text-xs font-medium text-muted-foreground"
+              >
+                <span className="w-1.5 h-1.5 rounded-full bg-primary" />
+                Interactive Coding Platform
+              </motion.div>
+
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold mb-6 tracking-tight text-foreground leading-[1.1]">
+                <Typewriter text={title} as="span" speed={80} startDelay={150} />
+              </h1>
+
+              <motion.p
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: 0.3, ease: "easeOut" }}
+                className="text-base sm:text-lg text-muted-foreground max-w-xl mb-6 leading-relaxed"
+              >
+                Master coding with AI-guided lessons, live code execution, and gamified progression.
+              </motion.p>
+
+              <motion.div
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3, delay: 0.4, ease: "easeOut" }}
+                className="mb-6"
+              >
+                <LanguageBadges />
+              </motion.div>
+
+              {description && (
+                <motion.div
+                  initial={{ opacity: 0, y: 14 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4, delay: 0.5, ease: "easeOut" }}
+                  className="mb-6 space-y-1"
+                >
+                  {description.map((line, i) => (
+                    <p key={i} className="text-sm sm:text-base text-muted-foreground">
+                      {line}
+                    </p>
+                  ))}
+                </motion.div>
+              )}
+
+              <motion.div
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: 0.6, ease: "easeOut" }}
+                className="flex flex-wrap items-center gap-4 justify-center lg:justify-start"
+              >
+                <Button size="lg" onClick={onCta} className="px-8 py-6 text-base">
+                  {cta}
+                  <span className="ml-2" aria-hidden="true">→</span>
+                </Button>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 14 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: 0.75, ease: "easeOut" }}
+                className="mt-10"
+              >
+                <AnimatedStats />
+              </motion.div>
             </motion.div>
-          )}
+          </div>
 
-          {/* CTA */}
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: 0.6, ease: "easeOut" }}
-          >
-            <Button
-              size="lg"
-              onClick={onCta}
-              className="chamfer px-8 py-6 text-base"
+          {/* Right: illustration — 5 cols on desktop, hidden on mobile */}
+          <div className="lg:col-span-5 hidden lg:flex items-center justify-center">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
+              className="w-full"
             >
-              {cta}
-              <span className="ml-2" aria-hidden="true">→</span>
-            </Button>
-          </motion.div>
-
-          {/* Stats */}
-          <motion.div
-            initial={{ opacity: 0, y: 14 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: 0.75, ease: "easeOut" }}
-            className="mt-10"
-          >
-            <AnimatedStats />
-          </motion.div>
-        </motion.div>
+              <HeroIllustration />
+            </motion.div>
+          </div>
+        </div>
       </div>
     </div>
   );

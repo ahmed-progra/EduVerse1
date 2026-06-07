@@ -7,6 +7,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { LevelUpWatcher } from "@/components/level-up-watcher";
 import { AchievementToast } from "@/components/achievement-toast";
+import { CommandPalette } from "@/components/command-palette";
 import { useState } from "react";
 
 export function Providers({ children }: { children: React.ReactNode }) {
@@ -21,6 +22,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
               {children}
               <LevelUpWatcher />
               <AchievementToast />
+              <CommandPalette />
             </TooltipProvider>
           </MotionConfig>
         </ThemeProvider>

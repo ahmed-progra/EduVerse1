@@ -2,29 +2,17 @@
 
 import { memo } from "react";
 import Link from "next/link";
+import { motion, useReducedMotion } from "motion/react";
 import { SpotlightCard } from "./spotlight-card";
-import { Button } from "./button";
-
-/**
- * SpotlightCourseCard — a course tile that grows more energetic with progress.
- * Used on the course catalog. When `progress` is provided the glow intensity
- * scales with it ("Course Progress cards become more energetic as progress
- * increases"); without it, a calm default is used.
- */
 
 type SpotlightCourseCardProps = {
   href: string;
   icon: string | null;
   title: string;
   description: string;
-  /** 0..100 — optional completion percentage. Drives glow intensity when present. */
   progress?: number;
+  index?: number;
 };
-
-function intensityFor(progress?: number): number {
-  if (progress == null) return 0.45;
-  return Math.min(0.95, 0.35 + (progress / 100) * 0.6);
-}
 
 function SpotlightCourseCardImpl({
   href,
@@ -32,26 +20,40 @@ function SpotlightCourseCardImpl({
   title,
   description,
   progress,
+  index = 0,
 }: SpotlightCourseCardProps) {
+  const reduce = useReducedMotion();
   return (
-    <Link href={href} className="block active:scale-[0.99] transition-transform">
-      <SpotlightCard accent="var(--primary)" intensity={intensityFor(progress)} className="p-6">
-        <div className="text-3xl mb-3">{icon}</div>
-        <h2 className="text-xl font-semibold text-card-foreground mb-2">{title}</h2>
-        <p className="text-sm text-muted-foreground mb-4">{description}</p>
-        {progress != null && (
-          <div className="mb-4 h-1 rounded-full bg-muted overflow-hidden">
-            <div
-              className="h-full rounded-full bg-primary transition-[width] duration-500 ease-out"
-              style={{ width: `${progress}%` }}
-            />
-          </div>
-        )}
-        <Button variant="outline" size="sm">
-          View Course
-        </Button>
-      </SpotlightCard>
-    </Link>
+    <motion.div
+      initial={reduce ? false : { opacity: 0, y: 18 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{
+        delay: Math.min(index * 0.05, 0.4),
+        type: "spring",
+        stiffness: 260,
+        damping: 24,
+        mass: 0.7,
+      }}
+    >
+      <Link href={href} className="block active:scale-[0.99] transition-transform">
+        <SpotlightCard className="p-6">
+          <div className="text-3xl mb-3">{icon}</div>
+          <h2 className="text-xl font-semibold text-card-foreground mb-2">{title}</h2>
+          <p className="text-sm text-muted-foreground mb-4">{description}</p>
+          {progress != null && (
+            <div className="mb-4 h-1.5 rounded-full bg-muted overflow-hidden">
+              <div
+                className="h-full w-full origin-left rounded-full bg-primary transition-transform duration-500 ease-out"
+                style={{ transform: `scaleX(${Math.max(0, Math.min(1, progress / 100))})` }}
+              />
+            </div>
+          )}
+          <span className="inline-flex items-center gap-1.5 text-xs font-medium text-primary">
+            View Course <span aria-hidden="true">→</span>
+          </span>
+        </SpotlightCard>
+      </Link>
+    </motion.div>
   );
 }
 

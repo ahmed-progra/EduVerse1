@@ -64,13 +64,14 @@ function formatTimeAgo(dateStr: string) {
 }
 
 function ProgressBarSpring({ pct, color }: { pct: number; color?: string }) {
+  const target = Math.max(0, Math.min(1, pct / 100));
   return (
     <div className="h-1.5 rounded-full bg-muted overflow-hidden">
       <motion.div
-        className="h-full rounded-full"
+        className="h-full w-full origin-left rounded-full"
         style={{ backgroundColor: color ?? "var(--primary)" }}
-        initial={{ width: "0%" }}
-        animate={{ width: `${pct}%` }}
+        initial={{ scaleX: 0 }}
+        animate={{ scaleX: target }}
         transition={{ type: "spring", stiffness: 120, damping: 18, mass: 0.5 }}
       />
     </div>
@@ -150,8 +151,6 @@ export function DashboardClient({
                   icon="⚡"
                   value={<AnimatedNumber value={totalXp} formatter={(n) => n.toLocaleString("en-US")} />}
                   label="Total XP"
-                  intensity={Math.min(0.9, 0.4 + level * 0.05)}
-                  pulseEvent="eduverse:xp-updated"
                   footer={
                     <>
                       <div className="mt-2">
@@ -171,8 +170,6 @@ export function DashboardClient({
                   icon="📚"
                   value={`${completedLessons}/${totalLessons}`}
                   label="Lessons Done"
-                  intensity={0.3 + (overallProgress / 100) * 0.6}
-                  pulseKey={completedLessons}
                   footer={
                     <>
                       <div className="mt-2">
@@ -189,8 +186,6 @@ export function DashboardClient({
                   icon="🔥"
                   value={<AnimatedNumber value={streakDays} />}
                   label="Day Streak"
-                  intensity={Math.min(0.85, 0.3 + streakDays * 0.04)}
-                  pulseKey={streakDays}
                   footer={
                     <>
                       {streakDays > 0 && (
@@ -224,8 +219,6 @@ export function DashboardClient({
                   icon="🏆"
                   value={leaderboardRank ? `#${leaderboardRank}` : "—"}
                   label="Leaderboard Rank"
-                  accent="var(--chart-2)"
-                  intensity={leaderboardRank ? Math.max(0.45, 0.9 - (leaderboardRank - 1) * 0.05) : 0.45}
                   footer={
                     <Link
                       href="/leaderboard"
@@ -257,8 +250,6 @@ export function DashboardClient({
                       className="block group"
                     >
                       <SpotlightWidget
-                        accent="var(--primary)"
-                        intensity={0.75}
                         className="border-primary bg-primary/5"
                       >
                         <p className="text-xs text-muted-foreground mb-1">{nextLesson.courseTitle}</p>
@@ -337,9 +328,9 @@ export function DashboardClient({
                               </p>
                               <div className="mt-1 h-1 w-16 ml-auto rounded-full bg-muted overflow-hidden">
                                 <motion.div
-                                  className="h-full rounded-full bg-primary"
-                                  initial={{ width: "0%" }}
-                                  animate={{ width: `${courseProgress}%` }}
+                                  className="h-full w-full origin-left rounded-full bg-primary"
+                                  initial={{ scaleX: 0 }}
+                                  animate={{ scaleX: courseProgress / 100 }}
                                   transition={{ type: "spring", stiffness: 120, damping: 18, mass: 0.5 }}
                                 />
                               </div>
@@ -444,9 +435,9 @@ export function DashboardClient({
                       {quest.target > 1 && (
                         <div className="mt-2 h-1.5 rounded-full bg-muted overflow-hidden">
                           <motion.div
-                            className="h-full rounded-full bg-primary"
-                            initial={{ width: "0%" }}
-                            animate={{ width: `${Math.min(100, Math.round((quest.progress / quest.target) * 100))}%` }}
+                            className="h-full w-full origin-left rounded-full bg-primary"
+                            initial={{ scaleX: 0 }}
+                            animate={{ scaleX: Math.min(1, quest.progress / quest.target) }}
                             transition={{ type: "spring", stiffness: 120, damping: 18, mass: 0.5 }}
                           />
                         </div>

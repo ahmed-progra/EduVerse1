@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { motion, useReducedMotion } from "motion/react";
-import { Terminal } from "lucide-react";
+import { Code2 } from "lucide-react";
 import { staggerSlow, fadeUpSpring } from "@/lib/motion-variants";
 
 const FOOTER_LINKS = {
@@ -70,15 +70,10 @@ export function Footer() {
             variants={fadeUpSpring}
             className="col-span-2 md:col-span-1"
           >
-            <Link href="/" className="inline-flex items-center gap-1.5 text-lg font-bold text-foreground hover:text-primary transition-colors">
-              <motion.span
-                className="text-primary"
-                aria-hidden="true"
-                whileHover={{ rotate: 15 }}
-                transition={{ type: "spring", stiffness: 300, damping: 10 }}
-              >&gt;</motion.span>
+            <Link href="/" className="inline-flex items-center gap-2 text-lg font-bold text-foreground hover:text-primary transition-colors">
+              <span className="w-2 h-2 rounded-full bg-primary inline-block shrink-0" aria-hidden="true" />
               <span>EduVerse</span>
-              <Terminal className="h-3.5 w-3.5 text-primary/60" aria-hidden="true" />
+              <Code2 className="h-3.5 w-3.5 text-primary/60" aria-hidden="true" />
             </Link>
             <p className="mt-3 text-sm text-muted-foreground leading-relaxed max-w-xs">
               An interactive coding platform with AI-guided lessons, live code execution,
@@ -92,7 +87,7 @@ export function Footer() {
               transition={{ delay: 0.3 }}
             >
               <motion.span
-                className="live-dot h-1.5 w-1.5 rounded-full bg-primary"
+                className="h-1.5 w-1.5 rounded-full bg-green-500 inline-block shrink-0"
                 animate={reduce ? undefined : { scale: [1, 1.3, 1] }}
                 transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
               />

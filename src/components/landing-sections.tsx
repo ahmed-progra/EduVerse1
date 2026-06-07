@@ -17,7 +17,6 @@ export function LandingSections({ cta, onCta }: { cta: string; onCta?: () => voi
 
   return (
     <div className="relative border-t border-border">
-      <div aria-hidden className="terminal-grid pointer-events-none absolute inset-0 opacity-50" />
 
       <div className="relative container mx-auto px-4 md:px-6">
         {/* ── About ────────────────────────────────────────────────── */}
@@ -28,9 +27,9 @@ export function LandingSections({ cta, onCta }: { cta: string; onCta?: () => voi
           viewport={vp}
           className={`${SECTION_CLASS} text-center`}
         >
-          <p className="mb-3 text-[11px] uppercase tracking-[0.3em] text-muted-foreground">
-            <span className="text-primary">{"// 00"}</span> — about
-          </p>
+          <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-1 mb-4 text-xs font-semibold text-primary">
+            About
+          </div>
           <motion.h2
             initial={reduce ? undefined : { opacity: 0, y: 20 }}
             whileInView={reduce ? undefined : { opacity: 1, y: 0 }}
@@ -38,7 +37,7 @@ export function LandingSections({ cta, onCta }: { cta: string; onCta?: () => voi
             transition={{ delay: 0.1, type: "spring", stiffness: 200, damping: 22 }}
             className="max-w-3xl mx-auto text-3xl md:text-4xl font-bold text-foreground"
           >
-            The terminal for your coding journey.
+            Your friendly guide to mastering code.
           </motion.h2>
           <motion.p
             initial={reduce ? undefined : { opacity: 0, y: 16 }}
@@ -76,9 +75,9 @@ export function LandingSections({ cta, onCta }: { cta: string; onCta?: () => voi
           viewport={vp}
           className={SECTION_CLASS}
         >
-          <p className="mb-3 text-[11px] uppercase tracking-[0.3em] text-muted-foreground">
-            <span className="text-primary">{"// 02"}</span> — how it works
-          </p>
+          <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-1 mb-4 text-xs font-semibold text-primary">
+            How It Works
+          </div>
           <motion.h2
             initial={reduce ? undefined : { opacity: 0, y: 20 }}
             whileInView={reduce ? undefined : { opacity: 1, y: 0 }}
@@ -126,9 +125,9 @@ export function LandingSections({ cta, onCta }: { cta: string; onCta?: () => voi
           viewport={vp}
           className={`${SECTION_CLASS} text-center py-24 md:py-28`}
         >
-          <p className="text-[11px] uppercase tracking-[0.3em] text-muted-foreground">
-            <span className="text-primary">{"// 07"}</span> — run
-          </p>
+          <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-1 mb-4 text-xs font-semibold text-primary">
+            Get Started
+          </div>
           <motion.h2
             initial={reduce ? undefined : { opacity: 0, y: 20, scale: 0.95 }}
             whileInView={reduce ? undefined : { opacity: 1, y: 0, scale: 1 }}
@@ -145,7 +144,7 @@ export function LandingSections({ cta, onCta }: { cta: string; onCta?: () => voi
             transition={{ delay: 0.2 }}
             className="mx-auto mt-4 max-w-xl text-sm text-muted-foreground sm:text-base"
           >
-            <span className="select-none text-primary">&gt;</span> Take a two-minute placement
+            Take a two-minute placement
             test and get a learning path built around what you already know.
           </motion.p>
           <motion.div
@@ -155,7 +154,7 @@ export function LandingSections({ cta, onCta }: { cta: string; onCta?: () => voi
             transition={{ delay: 0.35, type: "spring", stiffness: 300, damping: 18 }}
             className="mt-8"
           >
-            <Button size="lg" onClick={onCta} className="chamfer px-8 py-6 text-base">
+            <Button size="lg" onClick={onCta} className="px-8 py-6 text-base">
               {cta}
               <span className="ml-2" aria-hidden="true">→</span>
             </Button>
@@ -181,7 +180,7 @@ function MagneticCard({ num, icon, title, body }: { num: string; icon: string; t
     <div
       ref={ref}
       {...handlers}
-      className="relative group border border-border bg-card/60 p-5 transition-colors hover:border-primary/40"
+      className="relative group rounded-xl border border-border bg-card/60 p-5 transition-colors hover:border-primary/40 hover:shadow-md"
     >
       <span className="absolute top-3 right-3 text-[10px] font-bold text-muted-foreground/40 tabular-nums">
         {num}

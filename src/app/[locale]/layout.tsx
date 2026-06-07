@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { JetBrains_Mono, Chakra_Petch } from "next/font/google";
+import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import "../globals.css";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
@@ -9,20 +9,21 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { PageTransitionWrapper } from "@/components/page-transition";
 import { MeshGradient } from "@/components/ui/mesh-gradient";
+import { LeftSidebar } from "@/components/left-sidebar";
 import { AppDock } from "@/components/app-dock";
 import { RouteChangeLoader } from "@/components/route-change-loader";
 
 const locales = ["en", "ar"];
 
-const bodyFont = JetBrains_Mono({
+const bodyFont = Inter({
   subsets: ["latin"],
   variable: "--font-body",
   display: "swap",
 });
 
-const displayFont = Chakra_Petch({
+const displayFont = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  weight: ["500", "600", "700"],
+  weight: ["500", "600", "700", "800"],
   variable: "--font-display",
   display: "swap",
 });
@@ -67,13 +68,14 @@ export default async function LocaleLayout({
             <RouteChangeLoader />
             <Header />
             <MeshGradient />
+            <LeftSidebar />
             <a
               href="#main-content"
               className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-primary focus:text-primary-foreground focus:rounded-[var(--radius)]"
             >
               Skip to content
             </a>
-            <main id="main-content" className="min-h-[calc(100vh-3.5rem)] pb-20">
+            <main id="main-content" className="min-h-[calc(100vh-3.5rem)] pb-20 lg:pb-0 lg:ml-64">
               <PageTransitionWrapper>{children}</PageTransitionWrapper>
             </main>
             <AppDock />

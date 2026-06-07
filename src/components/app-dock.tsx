@@ -38,13 +38,13 @@ export function AppDock() {
       initial={reduce ? undefined : { y: 40, opacity: 0 }}
       animate={reduce ? undefined : { y: 0, opacity: 1 }}
       transition={{ type: "spring", stiffness: 300, damping: 25, delay: 0.15 }}
-      className="fixed bottom-4 left-1/2 -translate-x-1/2 z-50"
+      className="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 lg:hidden"
     >
       <motion.div
         variants={reduce ? undefined : staggerMedium}
         initial={reduce ? undefined : "hidden"}
         animate={reduce ? undefined : "show"}
-        className="flex items-end gap-1.5 px-3 py-2 rounded-[var(--radius)] border border-border bg-card/90 backdrop-blur-lg shadow-[var(--glow-soft)] border-t-primary/10"
+        className="flex items-end gap-1.5 px-3 py-2 rounded-full border border-border bg-card/90 backdrop-blur-lg shadow-lg"
       >
         {dockItems.map((item) => {
           const isActive = item.href !== "/" && (pathname === item.href || pathname.startsWith(`${item.href}/`));

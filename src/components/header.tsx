@@ -7,6 +7,7 @@ import { motion, useReducedMotion } from "motion/react";
 import { Button } from "@/components/ui/button";
 import { useTheme } from "@/components/theme-provider";
 import { LanguageSwitcher } from "@/components/language-switcher";
+import { CommandPaletteTrigger } from "@/components/command-palette-trigger";
 import { getLevel } from "@/lib/xp";
 import { cn } from "@/lib/utils";
 import { useEffect, useState } from "react";
@@ -27,7 +28,7 @@ function NavLink({
       href={href}
       aria-current={active ? "page" : undefined}
       className={cn(
-        "relative py-1 text-xs uppercase tracking-wider transition-colors",
+        "relative py-1 text-sm font-medium transition-colors",
         active ? "text-primary" : "text-muted-foreground hover:text-foreground",
         className,
       )}
@@ -41,7 +42,7 @@ function NavLink({
       {active && (
         <motion.span
           layoutId="nav-underline"
-          className="absolute -bottom-0.5 left-0 right-0 h-px bg-primary shadow-[0_0_8px_color-mix(in_oklch,var(--primary)_60%,transparent)]"
+          className="absolute -bottom-0.5 left-0 right-0 h-0.5 rounded-full bg-primary"
           transition={{ type: "spring", stiffness: 400, damping: 30 }}
         />
       )}
@@ -78,26 +79,16 @@ export function Header() {
       initial={reduce ? undefined : { y: -20, opacity: 0 }}
       animate={reduce ? undefined : { y: 0, opacity: 1 }}
       transition={{ type: "spring", stiffness: 300, damping: 25, mass: 0.8 }}
-      className="fixed top-0 left-0 right-0 z-50 border-b border-border bg-background/85 backdrop-blur-lg shadow-[0_1px_0_color-mix(in_oklch,var(--primary)_18%,transparent)]"
+      className="fixed top-0 start-0 end-0 z-50 border-b border-border bg-background/85 backdrop-blur-lg lg:ml-64 lg:w-[calc(100%-16rem)]"
     >
       <div className="container mx-auto flex h-14 items-center justify-between gap-4 px-4">
         <Link
           href="/"
-          className="flex items-center gap-1.5 text-lg font-bold tracking-tight text-foreground shrink-0 hover:text-primary transition-colors"
-          style={{ fontFamily: "var(--font-display), monospace" }}
+          className="flex items-center gap-2 text-lg font-bold tracking-tight text-foreground shrink-0 hover:text-primary transition-colors"
           aria-label="EduVerse home"
         >
-          <motion.span
-            className="text-primary"
-            aria-hidden="true"
-            whileHover={{ rotate: 10 }}
-            transition={{ type: "spring", stiffness: 300, damping: 10 }}
-          >&gt;</motion.span>
+          <span className="w-2 h-2 rounded-full bg-primary inline-block shrink-0" aria-hidden="true" />
           <span>EduVerse</span>
-          <span className="hidden sm:inline text-[10px] uppercase tracking-[0.2em] text-muted-foreground ml-2">
-            / interactive coding
-          </span>
-          <span className="text-primary cursor-blink" aria-hidden="true" />
         </Link>
 
         <nav className="flex items-center gap-3 sm:gap-4 min-w-0" aria-label="Main navigation">
@@ -106,7 +97,7 @@ export function Header() {
               initial={reduce ? undefined : { opacity: 0, scale: 0.9 }}
               animate={reduce ? undefined : { opacity: 1, scale: 1 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
-              className="hidden md:inline-flex items-center gap-1.5 border border-border bg-card/40 px-2 py-0.5 text-xs shadow-[0_0_8px_color-mix(in_oklch,var(--primary)_15%,transparent)]"
+              className="hidden md:inline-flex items-center gap-1.5 border border-border bg-card/40 px-2 py-0.5 text-xs"
               aria-label={`Level ${level}, ${totalXp} total XP`}
             >
               <span className="font-semibold text-primary tabular-nums">Lv {level}</span>
@@ -130,13 +121,15 @@ export function Header() {
             </>
           ) : null}
 
+          <CommandPaletteTrigger />
+
           <motion.button
             whileHover={reduce ? undefined : { scale: 1.08, rotate: 20 }}
             whileTap={{ scale: 0.92 }}
             transition={{ type: "spring", stiffness: 400, damping: 15 }}
             onClick={() => setTheme(theme === "light" ? "dark" : "light")}
             aria-label={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
-            className="grid h-8 w-8 place-items-center border border-border text-muted-foreground hover:text-primary hover:border-primary/50 transition-colors active:scale-[0.97]"
+            className="grid h-8 w-8 place-items-center rounded-full border border-border text-muted-foreground hover:text-primary hover:border-primary/50 transition-colors active:scale-[0.97]"
           >
             {theme === "light" ? (
               <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">

@@ -7,26 +7,26 @@ import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center whitespace-nowrap rounded-[var(--radius)] text-sm font-semibold uppercase tracking-wide transition-[color,background-color,border-color,box-shadow,transform] duration-150 ease-out focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring focus-visible:shadow-[var(--glow)] disabled:pointer-events-none disabled:opacity-50 active:scale-[0.97] overflow-hidden relative",
+  "inline-flex items-center justify-center whitespace-nowrap rounded-full text-sm font-semibold transition-[color,background-color,border-color,box-shadow,transform] duration-150 ease-out focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 active:scale-[0.97] overflow-hidden relative",
   {
     variants: {
       variant: {
         default:
-          "bg-primary text-primary-foreground border border-primary/60 hover:bg-primary/90 hover:shadow-[var(--glow)]",
+          "bg-primary text-primary-foreground border border-primary/60 hover:bg-primary/90 shadow-sm hover:shadow-md",
         destructive:
-          "bg-destructive text-destructive-foreground border border-destructive/60 hover:bg-destructive/90 hover:shadow-[0_0_16px_-2px_color-mix(in_oklch,var(--destructive)_55%,transparent)]",
+          "bg-destructive text-destructive-foreground border border-destructive/60 hover:bg-destructive/90",
         outline:
-          "border border-border bg-transparent text-foreground hover:border-primary hover:text-primary hover:shadow-[var(--glow)]",
+          "border border-border bg-transparent text-foreground hover:border-primary hover:text-primary",
         secondary:
           "bg-secondary text-secondary-foreground border border-border hover:border-primary/50 hover:text-foreground",
         ghost: "hover:bg-accent hover:text-accent-foreground",
-        link: "text-primary underline-offset-4 hover:underline normal-case tracking-normal",
+        link: "text-primary underline-offset-4 hover:underline",
       },
       size: {
-        default: "h-9 px-4 py-2",
-        sm: "h-8 rounded-[var(--radius)] px-3 text-xs",
-        lg: "h-10 rounded-[var(--radius)] px-8",
-        icon: "h-9 w-9",
+        default: "h-10 px-6 py-2",
+        sm: "h-8 px-4 text-xs",
+        lg: "h-12 px-10 text-base",
+        icon: "h-10 w-10",
       },
     },
     defaultVariants: {

@@ -51,7 +51,7 @@ export function LandingFeatures() {
               variants={reduce ? undefined : sectionItem}
               className="group"
             >
-              <SpotlightCard intensity={f.intensity} className="h-full p-5 bg-card/80">
+              <SpotlightCard className="h-full p-5 bg-card/80">
                 <motion.span
                   className="inline-grid h-10 w-10 place-items-center border border-primary/40 bg-primary/5 text-primary group-hover:bg-primary/10 transition-colors"
                   whileHover={{ rotate: [0, -8, 8, 0], scale: 1.1 }}

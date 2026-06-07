@@ -1,41 +1,25 @@
 @import "tailwindcss";
 
-/* ============================================================================
-   EduVerse — "Dark Terminal" design system
-   A hacker-terminal aesthetic for a coding-education platform: deep dark base,
-   monospace type, a single phosphor-green accent, subtle glow, sharp edges.
-   Dark is the primary experience; `.light` is a tuned "light terminal" mode.
-   All values are OKLCH and exposed as tokens — components stay semantic.
-   ========================================================================== */
-
 @layer base {
   html {
-    font-family: var(--font-body), ui-monospace, "SF Mono", Menlo, monospace;
-    /* Slightly tighter mono rhythm reads better at UI sizes. */
+    font-family: var(--font-body), system-ui, sans-serif;
     font-feature-settings: "ss01", "cv01", "calt";
   }
 
-  /* Theme cross-fade only — never `transition: all`. Killed by .no-transitions
-     during an explicit theme switch and under prefers-reduced-motion. */
   *,
   *::before,
   *::after {
     transition: background-color 0.25s ease, border-color 0.25s ease, color 0.2s ease;
   }
 
-  /* Terminal headings: monospace, uppercase, tracked. JetBrains Mono ships real
-     weights, so `font-bold` is true bold (no more faux-bold on a 400-only face). */
   h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-display), ui-monospace, monospace;
-    font-weight: 600;
-    letter-spacing: 0.03em;
-    text-transform: uppercase;
+    font-family: var(--font-display), system-ui, sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.02em;
   }
 
-  /* Long-form markdown (lesson theory) keeps natural-case, tighter headings. */
   .prose :is(h1, h2, h3, h4, h5, h6) {
-    text-transform: none;
-    letter-spacing: -0.005em;
+    letter-spacing: -0.01em;
     font-weight: 700;
   }
 
@@ -45,116 +29,103 @@
   }
 
   ::selection {
-    background: color-mix(in oklch, var(--primary) 35%, transparent);
+    background: color-mix(in oklch, var(--primary) 30%, transparent);
     color: var(--foreground);
   }
 
-  /* Themed scrollbar so even chrome reads "terminal". */
   * {
-    scrollbar-color: color-mix(in oklch, var(--primary) 45%, transparent) transparent;
+    scrollbar-color: color-mix(in oklch, var(--muted-foreground) 40%, transparent) transparent;
   }
-  *::-webkit-scrollbar { width: 10px; height: 10px; }
+  *::-webkit-scrollbar { width: 8px; height: 8px; }
   *::-webkit-scrollbar-track { background: transparent; }
   *::-webkit-scrollbar-thumb {
-    background: color-mix(in oklch, var(--primary) 30%, var(--border));
-    border-radius: 0;
+    background: color-mix(in oklch, var(--muted-foreground) 25%, var(--border));
+    border-radius: 999px;
     border: 2px solid var(--background);
   }
   *::-webkit-scrollbar-thumb:hover {
-    background: color-mix(in oklch, var(--primary) 55%, var(--border));
+    background: color-mix(in oklch, var(--muted-foreground) 50%, var(--border));
   }
 }
 
-/* ---------- Tokens: DARK is the default (no class / .dark) ---------- */
-:root,
+:root {
+  --radius: 0.75rem;
+
+  --card: #FDFCF9;
+  --ring: #FF6B35;
+  --input: #DED8CE;
+  --muted: #EDE8DD;
+  --accent: #FFE8D6;
+  --border: #DED8CE;
+  --chart-1: #FF6B35;
+  --chart-2: #7C5CFC;
+  --chart-3: #2EC4B6;
+  --chart-4: #E8A838;
+  --chart-5: #D94A4A;
+  --popover: #FDFCF9;
+  --primary: #FF6B35;
+  --sidebar: #FDFCF9;
+  --secondary: #7C5CFC;
+  --background: #F5F0E6;
+  --foreground: #2D2B2A;
+  --destructive: #D94A4A;
+  --sidebar-ring: #FF6B35;
+  --sidebar-accent: #FFE8D6;
+  --sidebar-border: #DED8CE;
+  --card-foreground: #2D2B2A;
+  --sidebar-primary: #FF6B35;
+  --muted-foreground: #8A8480;
+  --accent-foreground: #2D2B2A;
+  --popover-foreground: #2D2B2A;
+  --primary-foreground: #FFFFFF;
+  --sidebar-foreground: #2D2B2A;
+  --secondary-foreground: #FFFFFF;
+  --destructive-foreground: #FFFFFF;
+  --sidebar-accent-foreground: #2D2B2A;
+  --sidebar-primary-foreground: #FFFFFF;
+
+  --ease-out: cubic-bezier(0, 0, 0.58, 1);
+  --ease-in-out: cubic-bezier(0.42, 0, 0.58, 1);
+}
+
 .dark {
-  --radius: 0.125rem;
-
-  --card: #1e1e1c;
-  --ring: #e88d6a;
-  --input: #4a4942;
-  --muted: #141412;
-  --accent: #14130f;
-  --border: #3a3a34;
-  --chart-1: #e07a50;
-  --chart-2: #7c6cf0;
-  --chart-3: #14130f;
-  --chart-4: #28244a;
-  --chart-5: #d96a3a;
-  --popover: #282826;
-  --primary: #e88d6a;
-  --sidebar: #181817;
-  --secondary: #f0efe8;
-  --background: #1a1a18;
-  --foreground: #d4d1c6;
-  --destructive: #f05a5a;
-  --sidebar-ring: #a0a0a0;
-  --sidebar-accent: #0a0a08;
-  --sidebar-border: #d0d0d0;
-  --card-foreground: #f0efe8;
-  --sidebar-primary: #2e2e2c;
-  --muted-foreground: #a8a69c;
-  --accent-foreground: #f0efe8;
-  --popover-foreground: #dcdad2;
-  --primary-foreground: #0a0a08;
-  --sidebar-foreground: #d4d1c6;
-  --secondary-foreground: #282826;
-  --destructive-foreground: #0a0a08;
-  --sidebar-accent-foreground: #d4d1c6;
-  --sidebar-primary-foreground: #f0efe8;
-
-  /* Glow language — one definition, reused everywhere. */
-  --glow: 0 0 0 1px color-mix(in oklch, var(--primary) 50%, transparent),
-          0 0 20px -2px color-mix(in oklch, var(--primary) 50%, transparent);
-  --glow-soft: 0 0 30px -6px color-mix(in oklch, var(--primary) 40%, transparent);
-  --grid-line: color-mix(in oklch, var(--primary) 10%, transparent);
+  --card: #262321;
+  --ring: #FF8C5A;
+  --input: #35312E;
+  --muted: #2F2C29;
+  --accent: #3D322C;
+  --border: #35312E;
+  --chart-1: #FF8C5A;
+  --chart-2: #9B82FF;
+  --chart-3: #2EC4B6;
+  --chart-4: #E8A838;
+  --chart-5: #D94A4A;
+  --popover: #262321;
+  --primary: #FF8C5A;
+  --sidebar: #1E1B19;
+  --secondary: #9B82FF;
+  --background: #1A1817;
+  --foreground: #E8E0D6;
+  --destructive: #D94A4A;
+  --sidebar-ring: #FF8C5A;
+  --sidebar-accent: #3D322C;
+  --sidebar-border: #35312E;
+  --card-foreground: #E8E0D6;
+  --sidebar-primary: #FF8C5A;
+  --muted-foreground: #9C958E;
+  --accent-foreground: #E8E0D6;
+  --popover-foreground: #E8E0D6;
+  --primary-foreground: #1A1817;
+  --sidebar-foreground: #E8E0D6;
+  --secondary-foreground: #1A1817;
+  --destructive-foreground: #E8E0D6;
+  --sidebar-accent-foreground: #E8E0D6;
+  --sidebar-primary-foreground: #1A1817;
 }
 
-/* ---------- Tokens: tuned LIGHT terminal ---------- */
-.light {
-  --card: #faf9f5;
-  --ring: #c96442;
-  --input: #c4c2b7;
-  --muted: #f0ede4;
-  --accent: #e8e4d8;
-  --border: #e0dfd8;
-  --chart-1: #d06a3e;
-  --chart-2: #7c6cf0;
-  --chart-3: #e4dfd0;
-  --chart-4: #d4cdf0;
-  --chart-5: #c95a2e;
-  --popover: #ffffff;
-  --primary: #c96442;
-  --sidebar: #f0ede4;
-  --secondary: #e8e4d8;
-  --background: #faf9f5;
-  --foreground: #2d2a1e;
-  --destructive: #d03a3a;
-  --sidebar-ring: #a0a0a0;
-  --sidebar-accent: #e8e4d8;
-  --sidebar-border: #d0d0d0;
-  --card-foreground: #1a180e;
-  --sidebar-primary: #c96442;
-  --muted-foreground: #7a7872;
-  --accent-foreground: #1f1d14;
-  --popover-foreground: #1f1d14;
-  --primary-foreground: #ffffff;
-  --sidebar-foreground: #2d2a1e;
-  --secondary-foreground: #4a4840;
-  --destructive-foreground: #ffffff;
-  --sidebar-accent-foreground: #2d2a1e;
-  --sidebar-primary-foreground: #fbfbfb;
-
-  --glow: 0 0 0 1px color-mix(in oklch, var(--primary) 40%, transparent),
-          0 0 18px -3px color-mix(in oklch, var(--primary) 32%, transparent);
-  --glow-soft: 0 0 24px -6px color-mix(in oklch, var(--primary) 24%, transparent);
-  --grid-line: color-mix(in oklch, var(--primary) 14%, transparent);
-}
-
-/* ---------- Tailwind v4 token bridge ---------- */
 @theme inline {
-  --font-display: var(--font-display), ui-monospace, monospace;
-  --font-body: var(--font-body), ui-monospace, monospace;
+  --font-display: var(--font-display), system-ui, sans-serif;
+  --font-body: var(--font-body), system-ui, sans-serif;
   --color-card: var(--card);
   --color-ring: var(--ring);
   --color-input: var(--input);
@@ -190,524 +161,21 @@
   --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
 }
 
-/* ============================================================================
-   Utilities — the shared glow / edge / terminal language
-   ========================================================================== */
-
-/* Subtle phosphor glow on text (hero, key numerals). */
-.text-glow {
-  text-shadow: 0 0 18px color-mix(in oklch, var(--primary) 45%, transparent);
-}
-
-/* Hover/focus glow for interactive surfaces. Pair with a border. */
-.glow-hover {
-  transition: box-shadow 0.18s ease, border-color 0.18s ease, transform 0.18s ease;
-}
-.glow-hover:hover {
-  box-shadow: var(--glow-soft);
-  border-color: color-mix(in oklch, var(--primary) 55%, var(--border));
-}
-
-/* ============================================================================
-   Spotlight enhancement layer
-   Cursor-tracked glow + accent edge for HIGH-VALUE widgets only (XP, level,
-   streak, rank, course + achievement cards). Built entirely on existing accent
-   tokens — coral `--primary` by default, `--chart-2` for secondary widgets.
-   No new colors. Every layer is decorative: pointer-events:none, behind content.
-   ========================================================================== */
-.spotlight-surface {
-  --spotlight-x: 50%;
-  --spotlight-y: 0%;
-  --spotlight-color: var(--primary);
-  --spotlight-size: 300px;
-  --spotlight-strength: 0.5;
-  --spotlight-active: 0;
-  position: relative;
-  isolation: isolate;
-  overflow: hidden;
-  /* transform is owned by Framer (tilt) — only animate paint props here. */
-  transition: box-shadow 0.25s ease, border-color 0.25s ease;
-}
-/* Cursor-following radial glow — above the card bg, below the content. */
-.spotlight-surface::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  border-radius: inherit;
-  pointer-events: none;
-  background: radial-gradient(
-    var(--spotlight-size) circle at var(--spotlight-x) var(--spotlight-y),
-    color-mix(in oklch, var(--spotlight-color) calc(var(--spotlight-strength) * 32%), transparent) 0%,
-    transparent 68%
-  );
-  opacity: var(--spotlight-active);
-  transition: opacity 0.3s ease;
-}
-.spotlight-surface > * {
-  position: relative;
-  z-index: 1;
-}
-/* Hover: lift the shadow and warm the border toward the accent. Promote to its
-   own compositor layer only while interacting, then release it. */
-.spotlight-surface[data-hover="true"] {
-  will-change: transform;
-  border-color: color-mix(in oklch, var(--spotlight-color) 55%, var(--border));
-  box-shadow:
-    0 0 0 1px color-mix(in oklch, var(--spotlight-color) 26%, transparent),
-    0 0 26px -6px color-mix(in oklch, var(--spotlight-color) calc(var(--spotlight-strength) * 70%), transparent);
-}
-
-/* XP-gain / reward pulse — one-shot ring of accent light. */
-.spotlight-pulse {
-  animation: spotlight-pulse 0.7s ease-out;
-}
-@keyframes spotlight-pulse {
-  0% {
-    box-shadow: 0 0 0 0 color-mix(in oklch, var(--spotlight-color) 50%, transparent);
-  }
-  45% {
-    box-shadow: 0 0 30px 2px color-mix(in oklch, var(--spotlight-color) 55%, transparent);
-  }
-  100% {
-    box-shadow: 0 0 0 0 color-mix(in oklch, var(--spotlight-color) 0%, transparent);
-  }
-}
-
-/* Achievement unlock — a single band of light sweeping across the card. */
-.spotlight-sweep-band {
-  position: absolute;
-  inset-block: 0;
-  inline-size: 45%;
-  z-index: 2;
-  pointer-events: none;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    color-mix(in oklch, var(--spotlight-color) 26%, transparent),
-    transparent
-  );
-  animation: spotlight-sweep 0.9s ease-out forwards;
-}
-@keyframes spotlight-sweep {
-  0% {
-    transform: translateX(-130%) skewX(-12deg);
-    opacity: 0;
-  }
-  18% {
-    opacity: 1;
-  }
-  100% {
-    transform: translateX(230%) skewX(-12deg);
-    opacity: 0;
-  }
-}
-
-/* Touch / small screens: smaller glow, drop the transform layer. */
-@media (pointer: coarse), (max-width: 767px) {
-  .spotlight-surface {
-    --spotlight-size: 220px;
-    will-change: auto;
-  }
-}
-/* Reduced motion: kill the moving glow + one-shots, keep the static hover edge. */
-@media (prefers-reduced-motion: reduce) {
-  .spotlight-surface {
-    will-change: auto;
-  }
-  .spotlight-surface::before {
-    display: none;
-  }
-  .spotlight-pulse,
-  .spotlight-sweep-band {
-    animation: none;
-  }
-}
-
-/* Chamfered (sharp-cut) corners for CTAs and feature panels. */
-.chamfer {
-  clip-path: polygon(
-    10px 0, 100% 0, 100% calc(100% - 10px),
-    calc(100% - 10px) 100%, 0 100%, 0 10px
-  );
-}
-.chamfer-sm {
-  clip-path: polygon(
-    6px 0, 100% 0, 100% calc(100% - 6px),
-    calc(100% - 6px) 100%, 0 100%, 0 6px
-  );
-}
-
-/* Terminal `>` prompt prefix for inputs / labels. */
-.terminal-prefix {
-  position: relative;
-}
-.terminal-prefix > input,
-.terminal-prefix > textarea {
-  padding-inline-start: 1.6rem;
-}
-.terminal-prefix::before {
-  content: ">";
-  position: absolute;
-  inset-inline-start: 0.6rem;
-  top: 50%;
-  transform: translateY(-50%);
-  color: var(--primary);
-  font-weight: 700;
-  pointer-events: none;
-  z-index: 1;
-}
-
-/* Blinking block cursor. */
-.cursor-blink::after {
-  content: "_";
-  margin-left: 0.06em;
-  color: var(--primary);
-  animation: cursor-blink 1.1s steps(1) infinite;
-}
-@keyframes cursor-blink {
-  0%, 49% { opacity: 1; }
-  50%, 100% { opacity: 0; }
-}
-
-/* ============================================================================
-   Background system — deep base + grid + scanline + noise
-   ========================================================================== */
-
-.terminal-grid {
-  background-image:
-    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
-    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
-  background-size: 44px 44px;
-  mask-image: radial-gradient(ellipse 75% 65% at 50% 40%, #000 55%, transparent 100%);
-  -webkit-mask-image: radial-gradient(ellipse 75% 65% at 50% 40%, #000 55%, transparent 100%);
-}
-
-/* Faint sweeping scanline band. */
-.scanline {
-  background: linear-gradient(
-    to bottom,
-    transparent 0%,
-    color-mix(in oklch, var(--primary) 7%, transparent) 50%,
-    transparent 100%
-  );
-  height: 38%;
-  will-change: transform;
-  animation: scan 8s linear infinite;
-}
-@keyframes scan {
-  0% { transform: translateY(-120%); }
-  100% { transform: translateY(360%); }
-}
-
-/* Slow ambient color drift on the primary glow — subtle, ~minute cycle. */
-@keyframes ambient-glow {
-  0%, 100% { opacity: 0.5; filter: hue-rotate(0deg); }
-  33% { opacity: 0.6; filter: hue-rotate(3deg); }
-  66% { opacity: 0.45; filter: hue-rotate(-2deg); }
-}
-.ambient-pulse {
-  animation: ambient-glow 90s ease-in-out infinite;
-}
-
-/* Floating sparkle field — randomly-placed pinpoints of light. */
-@keyframes sparkle {
-  0%, 100% { opacity: 0; transform: scale(0); }
-  20% { opacity: 0.6; transform: scale(1); }
-  80% { opacity: 0.2; transform: scale(0.8); }
-}
-.sparkle-field {
-  background-image:
-    radial-gradient(1px 1px at 10% 20%, color-mix(in oklch, var(--primary) 30%, transparent) 50%, transparent),
-    radial-gradient(1px 1px at 30% 60%, color-mix(in oklch, var(--primary) 25%, transparent) 50%, transparent),
-    radial-gradient(1.5px 1.5px at 50% 10%, color-mix(in oklch, var(--primary) 35%, transparent) 50%, transparent),
-    radial-gradient(1px 1px at 70% 40%, color-mix(in oklch, var(--primary) 20%, transparent) 50%, transparent),
-    radial-gradient(1px 1px at 90% 80%, color-mix(in oklch, var(--primary) 30%, transparent) 50%, transparent),
-    radial-gradient(1.5px 1.5px at 15% 90%, color-mix(in oklch, var(--primary) 25%, transparent) 50%, transparent),
-    radial-gradient(1px 1px at 45% 40%, color-mix(in oklch, var(--primary) 20%, transparent) 50%, transparent),
-    radial-gradient(1px 1px at 80% 15%, color-mix(in oklch, var(--primary) 30%, transparent) 50%, transparent),
-    radial-gradient(1.5px 1.5px at 60% 85%, color-mix(in oklch, var(--primary) 20%, transparent) 50%, transparent),
-    radial-gradient(1px 1px at 25% 75%, color-mix(in oklch, var(--primary) 25%, transparent) 50%, transparent),
-    radial-gradient(1px 1px at 85% 30%, color-mix(in oklch, var(--primary) 30%, transparent) 50%, transparent),
-    radial-gradient(1.5px 1.5px at 5% 50%, color-mix(in oklch, var(--primary) 20%, transparent) 50%, transparent),
-    radial-gradient(1px 1px at 65% 5%, color-mix(in oklch, var(--primary) 25%, transparent) 50%, transparent),
-    radial-gradient(1px 1px at 40% 95%, color-mix(in oklch, var(--primary) 30%, transparent) 50%, transparent),
-    radial-gradient(1.5px 1.5px at 55% 55%, color-mix(in oklch, var(--primary) 20%, transparent) 50%, transparent);
-  background-size: 100% 100%;
-  opacity: 0.5;
-  animation: sparkle-field-shift 120s linear infinite;
-}
-@keyframes sparkle-field-shift {
-  0% { background-position: 0 0; }
-  100% { background-position: 100px 100px; }
-}
-
-/* Fixed CRT scanline texture (static, very low opacity). */
-.scanlines-static {
-  background-image: repeating-linear-gradient(
-    to bottom,
-    color-mix(in oklch, var(--foreground) 6%, transparent) 0px,
-    color-mix(in oklch, var(--foreground) 6%, transparent) 1px,
-    transparent 1px,
-    transparent 3px
-  );
-  opacity: 0.35;
-}
-
-.noise-overlay {
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.15'/%3E%3C/svg%3E");
-  background-repeat: repeat;
-  background-size: 220px 220px;
-  mix-blend-mode: overlay;
-  opacity: 0.16;
-}
-
-/* Terminal typing animation for code snippets in the hero. */
-.typing-line {
-  overflow: hidden;
-  white-space: nowrap;
-  border-right: 2px solid var(--primary);
-  animation: typing 3s steps(40, end) forwards, blink-caret 0.8s step-end 6;
-  max-width: fit-content;
-}
-@keyframes typing {
-  from { width: 0; }
-  to { width: 100%; }
-}
-@keyframes blink-caret {
-  0%, 100% { border-color: var(--primary); }
-  50% { border-color: transparent; }
-}
-
-/* Ghost text — dimmed prefix line before the typing line. */
-.typing-ghost {
-  opacity: 0.35;
-}
-
-/* Subtle shimmer sweep for the hero stats. */
-@keyframes shimmer-shift {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
-}
-.shimmer-text {
-  background: linear-gradient(
-    90deg,
-    var(--foreground) 0%,
-    var(--primary) 50%,
-    var(--foreground) 100%
-  );
-  background-size: 200% 100%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: shimmer-shift 4s ease-in-out infinite;
-}
-
-/* Live dot pulse for the "live" indicator. */
-@keyframes live-pulse {
-  0%, 100% { box-shadow: 0 0 0 0 color-mix(in oklch, var(--destructive) 70%, transparent); }
-  50% { box-shadow: 0 0 6px 2px color-mix(in oklch, var(--destructive) 50%, transparent); }
-}
-.live-dot {
-  animation: live-pulse 1.5s ease-in-out infinite;
-}
-
-/* Stat number glow-up on the hero. */
-.stat-glow {
-  text-shadow: 0 0 20px color-mix(in oklch, var(--primary) 30%, transparent);
-}
-
-/* ============================================================================
-   Glitch — used sparingly on the hero wordmark (occasional, not constant)
-   ========================================================================== */
-.glitch {
-  animation: glitch-skew 8s infinite steps(1);
-}
-.glitch::before,
-.glitch::after {
-  content: attr(data-text);
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  opacity: 0.8;
-}
-.glitch::before {
-  color: color-mix(in oklch, var(--chart-2) 90%, white);
-  animation: glitch-shift-1 8s infinite steps(1);
-}
-.glitch::after {
-  color: color-mix(in oklch, var(--destructive) 80%, white);
-  animation: glitch-shift-2 8s infinite steps(1);
-}
-@keyframes glitch-skew {
-  0%, 92%, 100% { transform: none; }
-  93% { transform: translateX(-2px); }
-  95% { transform: translateX(2px) skewX(-3deg); }
-  97% { transform: translateX(-1px); }
-}
-@keyframes glitch-shift-1 {
-  0%, 92%, 100% { clip-path: inset(0 0 100% 0); transform: none; }
-  93% { clip-path: inset(8% 0 60% 0); transform: translate(-3px, -1px); }
-  96% { clip-path: inset(40% 0 30% 0); transform: translate(3px, 1px); }
-}
-@keyframes glitch-shift-2 {
-  0%, 92%, 100% { clip-path: inset(0 0 100% 0); transform: none; }
-  94% { clip-path: inset(55% 0 20% 0); transform: translate(3px, 1px); }
-  97% { clip-path: inset(20% 0 55% 0); transform: translate(-3px, -1px); }
-}
-
-.blob { display: none; } /* legacy warm-theme blobs are retired */
-
-/* ── Smooth scroll reveal ─────────────────────────────────── */
 @keyframes reveal-up {
   from { opacity: 0; transform: translateY(30px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* ── Float / bob — gentle vertical drift for cards ────────── */
 @keyframes float-subtle {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-6px); }
 }
-.float-card {
-  animation: float-subtle 5s ease-in-out infinite;
-}
-.float-card:nth-child(2) { animation-delay: -1.5s; }
-.float-card:nth-child(3) { animation-delay: -3s; }
-.float-card:nth-child(4) { animation-delay: -4.2s; }
 
-/* ── Gradient glow sweep ──────────────────────────────────── */
-@keyframes glow-sweep {
-  0% { opacity: 0.3; transform: scale(0.95); }
-  50% { opacity: 0.7; transform: scale(1.05); }
-  100% { opacity: 0.3; transform: scale(0.95); }
-}
-
-/* ── Glow ring pulse (for CTA / focus elements) ───────────── */
-@keyframes ring-pulse {
-  0% { box-shadow: 0 0 0 0 color-mix(in oklch, var(--primary) 40%, transparent); }
-  70% { box-shadow: 0 0 0 12px color-mix(in oklch, var(--primary) 0%, transparent); }
-  100% { box-shadow: 0 0 0 0 color-mix(in oklch, var(--primary) 0%, transparent); }
-}
-.glow-ring {
-  animation: ring-pulse 2.5s ease-out infinite;
-}
-
-/* ── Gradient border shimmer ───────────────────────────────── */
-@keyframes border-shimmer {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-.border-shimmer {
-  position: relative;
-  isolation: isolate;
-}
-.border-shimmer::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  padding: 1px;
-  background: linear-gradient(
-    135deg,
-    transparent 20%,
-    color-mix(in oklch, var(--primary) 40%, transparent) 50%,
-    transparent 80%
-  );
-  background-size: 200% 200%;
-  animation: border-shimmer 6s ease-in-out infinite;
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  pointer-events: none;
-}
-
-/* ── Typing glitch transition ─────────────────────────────── */
-@keyframes typing-glitch-out {
-  0% { opacity: 1; transform: translateX(0); }
-  25% { opacity: 0.8; transform: translateX(-2px); }
-  50% { opacity: 0; transform: translateX(3px); }
-  100% { opacity: 0; transform: translateX(0); }
-}
-
-/* ── Scale-in spring ──────────────────────────────────────── */
 @keyframes scale-in {
   from { opacity: 0; transform: scale(0.92); }
   to { opacity: 1; transform: scale(1); }
 }
 
-/* ── Muted fade-in for background particles ───────────────── */
-@keyframes particle-drift {
-  0% { transform: translateY(0) translateX(0); opacity: 0; }
-  20% { opacity: 0.6; }
-  80% { opacity: 0.3; }
-  100% { transform: translateY(-120px) translateX(20px); opacity: 0; }
-}
-
-/* ── Stronger shimmer for hero subtitle ───────────────────── */
-@keyframes shimmer-strong {
-  0% { background-position: -300% 50%; }
-  100% { background-position: 300% 50%; }
-}
-.shimmer-strong {
-  background: linear-gradient(
-    90deg,
-    var(--foreground) 0%,
-    var(--foreground) 25%,
-    var(--primary) 45%,
-    var(--chart-2) 55%,
-    var(--foreground) 75%,
-    var(--foreground) 100%
-  );
-  background-size: 300% 100%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: shimmer-strong 5s ease-in-out infinite;
-}
-
-/* ── Button click ripple ──────────────────────────────────── */
-@keyframes ripple {
-  from { opacity: 0.5; transform: scale(0); }
-  to { opacity: 0; transform: scale(6); }
-}
-.animate-ripple {
-  animation: ripple 0.6s ease-out forwards;
-}
-
-/* ── Count-up number glow ─────────────────────────────────── */
-@keyframes count-glow {
-  0% { text-shadow: 0 0 5px color-mix(in oklch, var(--primary) 20%, transparent); }
-  50% { text-shadow: 0 0 20px color-mix(in oklch, var(--primary) 50%, transparent), 0 0 40px color-mix(in oklch, var(--primary) 20%, transparent); }
-  100% { text-shadow: 0 0 5px color-mix(in oklch, var(--primary) 20%, transparent); }
-}
-.count-glow {
-  animation: count-glow 3s ease-in-out infinite;
-}
-
-/* ── Ambient orbiting glow ────────────────────────────────── */
-@keyframes ambient-orbit {
-  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.3; }
-  25% { transform: translate(30px, -20px) scale(1.1); opacity: 0.5; }
-  50% { transform: translate(-10px, -40px) scale(0.9); opacity: 0.35; }
-  75% { transform: translate(-30px, -10px) scale(1.05); opacity: 0.45; }
-}
-.ambient-orbit {
-  animation: ambient-orbit 25s ease-in-out infinite;
-}
-.ambient-orbit:nth-child(2) { animation-delay: -8s; animation-duration: 30s; }
-.ambient-orbit:nth-child(3) { animation-delay: -16s; animation-duration: 22s; }
-
-/* ── Float down for particle systems ──────────────────────── */
-@keyframes float-down {
-  0% { transform: translateY(-10vh) rotate(0deg); opacity: 0; }
-  10% { opacity: 0.4; }
-  90% { opacity: 0.2; }
-  100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
-}
-
-/* ── Skeleton shimmer ─────────────────────────────────────── */
 @keyframes skeleton-shimmer {
   0% { background-position: -200% 0; }
   100% { background-position: 200% 0; }
@@ -723,21 +191,53 @@
   animation: skeleton-shimmer 1.8s ease-in-out infinite;
 }
 
-/* ── Confetti burst ───────────────────────────────────────── */
-@keyframes confetti-fall {
-  0% { transform: translateY(0) rotate(0deg) scale(1); opacity: 1; }
-  100% { transform: translateY(300px) rotate(720deg) scale(0.3); opacity: 0; }
-}
-
-/* ── Slide up for notifications ───────────────────────────── */
 @keyframes slide-up-fade {
   0% { transform: translateY(20px); opacity: 0; }
   100% { transform: translateY(0); opacity: 1; }
 }
 
-/* ============================================================================
-   Motion preferences + theme-switch transition guard
-   ========================================================================== */
+@keyframes confetti-fall {
+  0% { transform: translateY(0) rotate(0deg) scale(1); opacity: 1; }
+  100% { transform: translateY(300px) rotate(720deg) scale(0.3); opacity: 0; }
+}
+
+@keyframes ripple {
+  from { opacity: 0.5; transform: scale(0); }
+  to { opacity: 0; transform: scale(6); }
+}
+.animate-ripple {
+  animation: ripple 0.6s ease-out forwards;
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.pillow-card {
+  box-shadow:
+    0 1px 3px color-mix(in oklch, var(--foreground) 6%, transparent),
+    0 4px 12px color-mix(in oklch, var(--foreground) 4%, transparent);
+}
+.pillow-card:hover {
+  box-shadow:
+    0 2px 8px color-mix(in oklch, var(--foreground) 10%, transparent),
+    0 8px 24px color-mix(in oklch, var(--foreground) 6%, transparent);
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.float-card {
+  animation: float-subtle 5s var(--ease-in-out) infinite;
+}
+.float-card:nth-child(2) { animation-delay: -1.5s; }
+.float-card:nth-child(3) { animation-delay: -3s; }
+.float-card:nth-child(4) { animation-delay: -4.2s; }
+
 .no-transitions *,
 .no-transitions *::before,
 .no-transitions *::after {
@@ -751,45 +251,9 @@
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
-  .scanline,
-  .glitch,
-  .glitch::before,
-  .glitch::after,
-  .cursor-blink::after,
-  .noise-overlay {
-    animation: none !important;
-  }
-  .glitch::before,
-  .glitch::after { display: none; }
 }
 
-/* ============================================================================
-   RTL Overrides for Arabic
-   ========================================================================== */
-[dir="rtl"] .chamfer {
-  clip-path: polygon(
-    0 10px, 0 0, calc(100% - 10px) 0,
-    100% 10px, 100% 100%, 10px 100%
-  );
-}
-[dir="rtl"] .chamfer-sm {
-  clip-path: polygon(
-    0 6px, 0 0, calc(100% - 6px) 0,
-    100% 6px, 100% 100%, 6px 100%
-  );
-}
 [dir="rtl"] h1, [dir="rtl"] h2, [dir="rtl"] h3,
 [dir="rtl"] h4, [dir="rtl"] h5, [dir="rtl"] h6 {
   letter-spacing: 0;
-}
-[dir="rtl"] .text-glow {
-  direction: ltr;
-  unicode-bidi: isolate;
-}
-[dir="rtl"] .terminal-prefix::before {
-  content: "<";
-}
-[dir="rtl"] .typing-line {
-  border-right: none;
-  border-left: 2px solid var(--primary);
 }
